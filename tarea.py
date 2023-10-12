@@ -16,8 +16,6 @@ def get_listaSuper():
 def create_todo():
     prod = request.json
     listaSuper.append(prod)
-    print(prod)
-    print(listaSuper)
     return jsonify(message="Producto Agregado")
 
 
@@ -25,9 +23,7 @@ def create_todo():
 @app.route("/api/listaSuper/<int:prod_id>", methods=["GET"])
 def get_prodLista(prod_id):
     for prod in listaSuper:
-        if prod["id"] == prod_id:
-            print(prod)
-            print(listaSuper)
+        if prod["id"] == str(prod_id):
             return jsonify(prod), 200
     return jsonify(message="Producto no encontrado"), 404
 
@@ -37,10 +33,8 @@ def get_prodLista(prod_id):
 def update_lista(prod_id):
     print(request.json)
     for prod in listaSuper:
-        if prod["id"] == prod_id:
+        if prod["id"] == str(prod_id):
             prod["producto"] = request.json["producto"]
-            print(prod)
-            print(listaSuper)
             return jsonify(message="Producto actualizado exitosamente"), 200
     return jsonify(message="Producto no encontrado"), 404
 
@@ -49,10 +43,8 @@ def update_lista(prod_id):
 @app.route("/api/listaSuper/<int:prod_id>", methods=["DELETE"])
 def delete_prod(prod_id):
     for prod in listaSuper:
-        if prod["id"] == prod_id:
-            print(prod)
+        if prod["id"] == str(prod_id):
             listaSuper.remove(prod)
-            print(listaSuper)
             return jsonify(message="Producto eliminado exitosamente"), 200
     return jsonify(message="Producto no encontrado"), 404
 
