@@ -1,0 +1,19 @@
+GET:
+http://127.0.0.1:5000/api/listaSuper
+
+POST:
+curl -X POST -H "Content-Type: application/json" \
+-d '{"id":"2","producto":"shampoo"}' \
+http://127.0.0.1:5000/api/listaSuper
+
+PUT:
+
+curl -X PUT -H "Content-Type: application/json" \
+-d '{"id":"1"}' \
+http://127.0.0.1:5000/api/listaSuper/<int:prod_id>
+
+DELETE:
+
+curl -X DELETE -H "Content-Type: application/json" \
+-d '{"id":"2","producto":"lechuga"}' \
+http://127.0.0.1:5000/api/listaSuper/<int:prod_id>
